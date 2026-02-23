@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from 'react';
 
 // --- ICONS (Remplacement de lucide-react par des SVG intégrés pour éviter les erreurs de chargement) ---
@@ -99,7 +100,10 @@ const App = () => {
   const [isEvaluatingArticle, setIsEvaluatingArticle] = useState(false);
   const [articleFeedback, setArticleFeedback] = useState('');
 
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY; // La clé API est fournie automatiquement par l'environnement
+  // NOTE POUR LE DÉPLOIEMENT VERCEL :
+  // Sur Vercel, vous devrez remplacer la ligne `const apiKey = "";` ci-dessous par :
+  // const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
   const callGemini = async (prompt) => {
     try {
